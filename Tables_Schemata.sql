@@ -1,5 +1,4 @@
 ﻿
-
 --Data Engineering 
 
 -- Exported from QuickDBD: https://www.quickdatabasediagrams.com/
@@ -7,6 +6,7 @@
 -- NOTE! If you have used non-SQL datatypes in your design, you will have to change these here.
 
 -- Create table titles
+DROP TABLE IF EXISTS titles
 CREATE TABLE "titles" (
     "title_id" VARCHAR(10)   NOT NULL,
     "title" VARCHAR(30)   NOT NULL,
@@ -17,7 +17,7 @@ CREATE TABLE "titles" (
 
 SELECT * FROM titles
 
-
+DROP TABLE IF EXISTS departments
 --Create table depatments
 CREATE TABLE "departments" (
     "dept_no" VARCHAR(10)   NOT NULL,
@@ -50,7 +50,10 @@ SELECT * FROM employees
 --Create table dep_manager 
 CREATE TABLE "dept_managers" (
     "dept_no" VARCHAR(10)   NOT NULL,
-    "emp_no" INTEGER   NOT NULL
+    "emp_no" INTEGER   NOT NULL,  
+	CONSTRAINT "dept_managers" PRIMARY KEY (
+        "emp_no"
+     )
 );
 
 SELECT * FROM dept_managers
@@ -59,7 +62,11 @@ SELECT * FROM dept_managers
 --Create table Salaries
 CREATE TABLE "salaries" (
     "emp_no" INTEGER   NOT NULL,
-    "salary" INTEGER   NOT NULL
+    "salary" INTEGER   NOT NULL,  
+	CONSTRAINT "salaries" PRIMARY KEY (
+        "emp_no"
+     )
+
 );
 
 SELECT * FROM salaries
@@ -69,8 +76,12 @@ SELECT * FROM salaries
 
 CREATE TABLE "dept_emp" (
     "emp_no" INTEGER   NOT NULL,
-    "dept_no" VARCHAR(10)   NOT NULL
+    "dept_no" VARCHAR(10)   NOT NULL,CONSTRAINT "dept_emp" PRIMARY KEY (
+        "emp_no"
+     )
+
 );
+
 
 SELECT * FROM dept_emp
 
